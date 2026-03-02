@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishak Custom Aquariums | Bay Area</title>
+  <meta name="description" content="Ishak Custom Aquariums — custom freshwater and saltwater aquarium builds in the San Francisco Bay Area. View our portfolio of past builds.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sand: #f5f0e8;
+      --deep-water: #1a3a3a;
+      --seafoam: #6fb8a0;
+      --seafoam-light: #a8dbc9;
+      --aqua: #3d9b8f;
+      --warm-white: #fdfcf9;
+      --stone: #8a8577;
+      --driftwood: #b5a68e;
+      --moss: #4a7a5e;
+      --text: #2c2c2a;
+      --text-light: #6b6b66;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      background: var(--warm-white);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(253,252,249,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(111,184,160,0.15);
+      transition: all 0.4s ease;
+    }
+    nav.scrolled { padding: 0.8rem 3rem; box-shadow: 0 2px 30px rgba(26,58,58,0.06); }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif; font-size: 1.4rem;
+      color: var(--deep-water); text-decoration: none; letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--aqua); }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-light); font-size: 0.9rem;
+      font-weight: 500; letter-spacing: 0.03em; transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--seafoam); transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--deep-water); }
+    .nav-links a:hover::after { width: 100%; }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--deep-water); transition: all 0.3s; }
+
+    /* HERO — compact */
+    .hero {
+      min-height: 55vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 8rem 2rem 3rem; position: relative; overflow: hidden;
+      background: linear-gradient(175deg, var(--warm-white) 0%, #eef7f3 40%, #d4ede3 100%);
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -40%; right: -20%;
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(111,184,160,0.12) 0%, transparent 70%);
+      animation: float 12s ease-in-out infinite;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -30%; left: -15%;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,155,143,0.08) 0%, transparent 70%);
+      animation: float 15s ease-in-out infinite reverse;
+    }
+    @keyframes float {
+      0%,100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(30px,-40px) scale(1.05); }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif; font-size: clamp(2.8rem,6vw,5rem);
+      color: var(--deep-water); line-height: 1.1; margin-bottom: 1.2rem;
+      opacity: 0; transform: translateY(30px); animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+    .hero p {
+      font-size: 1.1rem; color: var(--text-light); font-weight: 300;
+      max-width: 480px; margin: 0 auto 2rem; line-height: 1.7;
+      opacity: 0; transform: translateY(20px); animation: fadeUp 0.8s ease forwards 0.5s;
+    }
+    .scroll-hint { opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s; }
+    .scroll-hint a {
+      display: inline-flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      text-decoration: none; color: var(--stone); font-size: 0.75rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .scroll-hint svg { width: 20px; height: 20px; stroke: var(--aqua); animation: bounce 2s ease infinite; }
+    @keyframes bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* SECTION COMMON */
+    .section-label {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; color: var(--seafoam);
+      margin-bottom: 1rem; position: relative; padding-left: 2rem;
+    }
+    .section-label::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      width: 1.2rem; height: 1.5px; background: var(--seafoam);
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif; font-size: clamp(2rem,3.5vw,2.8rem);
+      color: var(--deep-water); margin-bottom: 1rem; line-height: 1.2;
+    }
+
+    /* ===== PORTFOLIO ===== */
+    #portfolio { padding: 5rem 2rem 6rem; background: var(--sand); }
+    .portfolio-header { text-align: center; max-width: 600px; margin: 0 auto 2.5rem; }
+    .portfolio-header p { color: var(--text-light); line-height: 1.7; font-weight: 300; }
+
+    /* Filter */
+    .filter-tabs { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .filter-tab {
+      padding: 0.55rem 1.4rem; border-radius: 50px; border: 1.5px solid var(--driftwood);
+      background: transparent; color: var(--stone); font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease;
+    }
+    .filter-tab:hover { border-color: var(--aqua); color: var(--aqua); }
+    .filter-tab.active { background: var(--aqua); border-color: var(--aqua); color: #fff; }
+
+    /* Featured */
+    .featured-project {
+      max-width: 1200px; margin: 0 auto 3rem; border-radius: 20px;
+      overflow: hidden; position: relative; aspect-ratio: 21/9; cursor: pointer;
+    }
+    .featured-project .project-bg {
+      width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease;
+      background: linear-gradient(135deg, #7fbba8 0%, #3d8a7a 50%, #2a6b5e 100%);
+    }
+    .featured-project:hover .project-bg { transform: scale(1.03); }
+    .featured-project .featured-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(26,58,58,0.8) 0%, rgba(26,58,58,0.2) 60%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 3rem;
+    }
+    .featured-badge {
+      display: inline-block; background: #e8926a; color: #fff;
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.35rem 0.9rem; border-radius: 50px; margin-bottom: 1rem; width: fit-content;
+    }
+    .featured-overlay h3 {
+      font-family: 'DM Serif Display', serif; color: #fff;
+      font-size: clamp(1.6rem,3vw,2.4rem); margin-bottom: 0.5rem;
+    }
+    .featured-overlay p { color: rgba(255,255,255,0.7); font-weight: 300; font-size: 0.95rem; max-width: 450px; line-height: 1.6; }
+    .featured-tags { display: flex; gap: 0.5rem; margin-top: 1rem; }
+    .featured-tags span {
+      padding: 0.3rem 0.8rem; border-radius: 50px;
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.75);
+      font-size: 0.75rem; font-weight: 400;
+    }
+
+    /* Project grid */
+    .project-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+    }
+    .project-card {
+      border-radius: 14px; overflow: hidden; cursor: pointer; position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,58,58,0.12); }
+    .project-card.tall { grid-row: span 2; }
+    .project-card.wide { grid-column: span 2; }
+    .project-img-wrap {
+      width: 100%; height: 100%; min-height: 260px; position: relative; overflow: hidden;
+    }
+    .project-card.tall .project-img-wrap { min-height: 540px; }
+    .project-card.wide .project-img-wrap { min-height: 320px; }
+    .project-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .project-card:hover .project-img-wrap img { transform: scale(1.05); }
+    .project-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,58,58,0.82) 0%, rgba(26,58,58,0.15) 40%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .project-card:hover .project-overlay { opacity: 1; }
+    .project-overlay h3 { color: #fff; font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .project-meta { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .project-meta span { color: var(--seafoam-light); font-size: 0.78rem; font-weight: 300; }
+    .project-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .project-desc { color: rgba(255,255,255,0.65); font-size: 0.82rem; font-weight: 300; line-height: 1.5; margin-top: 0.5rem; }
+
+    /* Placeholder */
+    .placeholder {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100%; min-height: inherit;
+      color: rgba(255,255,255,0.5); font-size: 0.8rem; font-weight: 400;
+      letter-spacing: 0.04em; position: relative;
+    }
+    .placeholder-inner { text-align: center; z-index: 1; }
+    .placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+    .placeholder-icon { width: 36px; height: 36px; opacity: 0.5; margin: 0 auto 0.4rem; display: block; }
+
+    .project-card:nth-child(1) { background: linear-gradient(150deg, #91c7b4, #5ea08d); }
+    .project-card:nth-child(2) { background: linear-gradient(150deg, #7fb5a8, #4d9080); }
+    .project-card:nth-child(3) { background: linear-gradient(150deg, #a8c9bb, #6ba593); }
+    .project-card:nth-child(4) { background: linear-gradient(150deg, #85b8a5, #52937f); }
+    .project-card:nth-child(5) { background: linear-gradient(150deg, #9cc3b2, #5f9d89); }
+    .project-card:nth-child(6) { background: linear-gradient(150deg, #89bca9, #4e9483); }
+    .project-card:nth-child(7) { background: linear-gradient(150deg, #a2c5b7, #6aa28f); }
+    .project-card:nth-child(8) { background: linear-gradient(150deg, #7db2a0, #4a8e7b); }
+
+    /* More work */
+    .more-work { max-width: 1200px; margin: 4rem auto 0; }
+    .more-work-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+    .more-work-header h3 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--deep-water); }
+    .more-work-header span { color: var(--stone); font-size: 0.85rem; font-weight: 300; }
+    .project-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; }
+    .strip-card {
+      border-radius: 12px; overflow: hidden; position: relative;
+      aspect-ratio: 3/4; cursor: pointer; transition: transform 0.4s ease;
+    }
+    .strip-card:hover { transform: translateY(-4px); }
+    .strip-card:nth-child(1) { background: linear-gradient(150deg, #8cbfad, #5a9e8a); }
+    .strip-card:nth-child(2) { background: linear-gradient(150deg, #a3c9ba, #6fa794); }
+    .strip-card:nth-child(3) { background: linear-gradient(150deg, #79b19e, #4d8f7d); }
+    .strip-card:nth-child(4) { background: linear-gradient(150deg, #96c2b0, #62a08c); }
+    .strip-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,58,58,0.8) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem;
+      opacity: 0; transition: opacity 0.35s ease;
+    }
+    .strip-card:hover .strip-overlay { opacity: 1; }
+    .strip-overlay h4 { color: #fff; font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 0.2rem; }
+    .strip-overlay span { color: var(--seafoam-light); font-size: 0.75rem; font-weight: 300; }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10,25,25,0.92); backdrop-filter: blur(10px);
+      display: none; align-items: center; justify-content: center; padding: 2rem; cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      max-width: 900px; width: 100%; background: var(--warm-white);
+      border-radius: 20px; overflow: hidden; cursor: default; animation: lbIn 0.35s ease;
+    }
+    @keyframes lbIn { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .lightbox-img-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #91c7b4, #5ea08d);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5); font-size: 1rem;
+    }
+    .lightbox-body { padding: 2rem; }
+    .lightbox-body h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--deep-water); margin-bottom: 0.5rem; }
+    .lb-meta { display: flex; gap: 1.5rem; margin-bottom: 1rem; }
+    .lb-meta span { font-size: 0.82rem; color: var(--stone); font-weight: 400; }
+    .lightbox-body p { color: var(--text-light); line-height: 1.7; font-weight: 300; font-size: 0.95rem; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      width: 40px; height: 40px; border-radius: 50%; border: none;
+      background: rgba(255,255,255,0.1); color: #fff; font-size: 1.3rem;
+      cursor: pointer; transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+    /* ABOUT — compact */
+    #about { padding: 5rem 2rem; background: var(--warm-white); }
+    .about-strip {
+      display: grid; grid-template-columns: 1fr 2fr; gap: 3.5rem;
+      max-width: 1100px; margin: 0 auto; align-items: center;
+    }
+    .about-photo { border-radius: 16px; overflow: hidden; aspect-ratio: 1; background: linear-gradient(150deg, #c5ddd4, #8cbfad); }
+    .about-text p { color: var(--text-light); line-height: 1.8; font-weight: 300; margin-bottom: 1.2rem; }
+    .btn {
+      display: inline-block; padding: 0.9rem 2.2rem; border-radius: 50px;
+      font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.04em; text-decoration: none; transition: all 0.35s ease;
+      cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--aqua); color: #fff; }
+    .btn-primary:hover { background: var(--moss); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(26,58,58,0.2); }
+
+    /* CONTACT */
+    #contact { background: var(--deep-water); color: #fff; padding: 5rem 2rem; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .contact-info .section-title { color: #fff; }
+    .contact-info p { color: rgba(255,255,255,0.6); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+    .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .contact-detail .icon {
+      width: 40px; height: 40px; border-radius: 50%; background: rgba(111,184,160,0.15);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-detail .icon svg { width: 18px; height: 18px; stroke: var(--seafoam); fill: none; stroke-width: 1.5; }
+    .contact-detail span, .contact-detail a {
+      color: rgba(255,255,255,0.8); font-weight: 300; font-size: 0.95rem;
+      text-decoration: none; transition: color 0.3s;
+    }
+    .contact-detail a:hover { color: var(--seafoam-light); }
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-row { display: flex; gap: 1.2rem; }
+    .form-row input { flex: 1; }
+    .contact-form input, .contact-form textarea {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 1rem 1.2rem; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 300;
+      outline: none; transition: border-color 0.3s, background 0.3s; resize: vertical;
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--seafoam); background: rgba(255,255,255,0.08); }
+    .contact-form textarea { min-height: 130px; }
+
+    /* FOOTER */
+    footer {
+      background: #14302f; padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    footer span { color: rgba(255,255,255,0.35); font-size: 0.8rem; font-weight: 300; }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.22,0.61,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .project-grid { grid-template-columns: repeat(2,1fr); }
+      .project-card.tall { grid-row: span 1; }
+      .project-card.tall .project-img-wrap { min-height: 260px; }
+      .project-strip { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(253,252,249,0.97);
+        backdrop-filter: blur(16px); padding: 1.5rem 2rem; gap: 1.2rem;
+        border-bottom: 1px solid rgba(111,184,160,0.15);
+      }
+      .about-strip { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { max-width: 280px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .form-row { flex-direction: column; }
+      .featured-project { aspect-ratio: 16/9; }
+      .featured-overlay { padding: 2rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+    @media (max-width: 600px) {
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card.wide { grid-column: span 1; }
+      .project-strip { grid-template-columns: 1fr 1fr; }
+      .filter-tabs { gap: 0.35rem; }
+      .filter-tab { padding: 0.45rem 1rem; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Ishak <span>Aquariums</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Ishak Custom Aquariums</h1>
+      <p>Custom-built freshwater and saltwater aquariums, designed and installed across the Bay Area.</p>
+      <div class="scroll-hint">
+        <a href="#portfolio">
+          See our work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio">
+    <div class="portfolio-header reveal">
+      <span class="section-label">Portfolio</span>
+      <h2 class="section-title">Our Builds</h2>
+      <p>Every aquarium we create is one of a kind — designed for the space, the species, and the people who'll enjoy it every day.</p>
+    </div>
+
+    <div class="filter-tabs reveal">
+      <button class="filter-tab active" data-filter="all">All Builds</button>
+      <button class="filter-tab" data-filter="freshwater">Freshwater</button>
+      <button class="filter-tab" data-filter="saltwater">Saltwater</button>
+      <button class="filter-tab" data-filter="custom">Custom Install</button>
+    </div>
+
+    <!-- Featured -->
+    <div class="featured-project reveal" onclick="openLightbox(this)" data-title="Living Room Centerpiece" data-type="Freshwater" data-size="120 Gallon" data-desc="A stunning 120-gallon planted freshwater tank designed as the focal point of a modern living room in Palo Alto. Featuring driftwood hardscape, carpeting plants, and a hand-picked community of tetras and rasboras.">
+      <div class="project-bg"></div>
+      <div class="featured-overlay">
+        <div class="featured-badge">Featured Build</div>
+        <h3>Living Room Centerpiece</h3>
+        <p>120-gallon planted freshwater tank built as the focal point for a Palo Alto home.</p>
+        <div class="featured-tags"><span>Freshwater</span><span>120 Gallon</span><span>Planted</span></div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="project-grid">
+      <div class="project-card tall reveal" data-category="freshwater" onclick="openLightbox(this)" data-title="Iwagumi Scape" data-type="Freshwater" data-size="60 Gallon" data-desc="A minimalist Iwagumi-style aquascape using Seiryu stone and a dense Monte Carlo carpet. Designed for a home office in San Jose.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 28l8-10 6 7 8-12 6 8"/><rect x="2" y="4" width="32" height="28" rx="3"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Iwagumi Scape</h3><div class="project-meta"><span>Freshwater</span><div class="dot"></div><span>60 Gallon</span></div><p class="project-desc">Minimalist stone layout with Monte Carlo carpet. San Jose home office.</p></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1" data-category="saltwater" onclick="openLightbox(this)" data-title="Reef Peninsula" data-type="Saltwater" data-size="90 Gallon" data-desc="A peninsula-style reef aquarium with SPS and LPS corals, built into a kitchen island divider in a Mountain View condo.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><circle cx="18" cy="18" r="14"/><path d="M12 22c2-3 5-6 10-4"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Reef Peninsula</h3><div class="project-meta"><span>Saltwater</span><div class="dot"></div><span>90 Gallon</span></div></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2" data-category="freshwater" onclick="openLightbox(this)" data-title="Blackwater Biotope" data-type="Freshwater" data-size="75 Gallon" data-desc="A South American blackwater biotope featuring tannin-stained water, botanicals, and a school of cardinal tetras. Built for a collector in Sunnyvale.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="18" cy="20" rx="14" ry="8"/><path d="M8 16c3-5 7-8 14-6"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Blackwater Biotope</h3><div class="project-meta"><span>Freshwater</span><div class="dot"></div><span>75 Gallon</span></div></div>
+      </div>
+
+      <div class="project-card wide reveal" data-category="custom" onclick="openLightbox(this)" data-title="Restaurant Wall Install" data-type="Custom Install" data-size="200 Gallon" data-desc="A 200-gallon built-in wall aquarium for a seafood restaurant in San Francisco. Designed to be viewable from both the dining room and bar area.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="8" width="30" height="20" rx="2"/><path d="M3 22h30"/><path d="M14 14h8v4h-8z"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Restaurant Wall Install</h3><div class="project-meta"><span>Custom Install</span><div class="dot"></div><span>200 Gallon</span><div class="dot"></div><span>San Francisco</span></div><p class="project-desc">Built-in wall unit viewable from dining room and bar.</p></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1" data-category="freshwater" onclick="openLightbox(this)" data-title="Dutch Style Planted" data-type="Freshwater" data-size="55 Gallon" data-desc="A lush Dutch-style planted tank with layered stem plants and rich color contrast. Built for a family in Cupertino.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><path d="M6 30l6-14 5 8 7-16 6 10"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Dutch Style Planted</h3><div class="project-meta"><span>Freshwater</span><div class="dot"></div><span>55 Gallon</span></div></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-1" data-category="custom" onclick="openLightbox(this)" data-title="Office Lobby Feature" data-type="Custom Install" data-size="150 Gallon" data-desc="A freestanding 150-gallon column tank in a tech company lobby in Santa Clara. Freshwater community with dramatic LED lighting.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><rect x="10" y="4" width="16" height="28" rx="3"/><path d="M14 14h8"/><path d="M14 20h8"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Office Lobby Feature</h3><div class="project-meta"><span>Custom Install</span><div class="dot"></div><span>150 Gallon</span></div></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-2" data-category="saltwater" onclick="openLightbox(this)" data-title="Nano Reef" data-type="Saltwater" data-size="20 Gallon" data-desc="A compact nano reef packed with color — zoanthids, acans, and a pair of clownfish. Desktop setup for a home in Fremont.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><rect x="8" y="10" width="20" height="16" rx="2"/><circle cx="18" cy="18" r="4"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Nano Reef</h3><div class="project-meta"><span>Saltwater</span><div class="dot"></div><span>20 Gallon</span></div></div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3" data-category="freshwater" onclick="openLightbox(this)" data-title="Paludarium" data-type="Freshwater" data-size="40 Gallon" data-desc="A half-land, half-water paludarium with emersed plants, mossy rocks, and a small waterfall feature. Built for a plant enthusiast in Oakland.">
+        <div class="project-img-wrap"><div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 20h28"/><path d="M8 20v-8c2-3 6-4 10-2s8-1 10-4v14"/><circle cx="14" cy="26" r="2"/></svg>Your photo</div></div></div>
+        <div class="project-overlay"><h3>Paludarium</h3><div class="project-meta"><span>Freshwater</span><div class="dot"></div><span>40 Gallon</span></div></div>
+      </div>
+    </div>
+
+    <!-- More work strip -->
+    <div class="more-work reveal">
+      <div class="more-work-header"><h3>More Work</h3></div>
+      <div class="project-strip">
+        <div class="strip-card" onclick="openLightbox(this)" data-title="Community Tank" data-type="Freshwater" data-size="45 Gallon" data-desc="A peaceful community freshwater tank with angelfish, corydoras, and live plants.">
+          <div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><circle cx="18" cy="18" r="12"/></svg>Your photo</div></div>
+          <div class="strip-overlay"><h4>Community Tank</h4><span>Freshwater &bull; 45 Gal</span></div>
+        </div>
+        <div class="strip-card" onclick="openLightbox(this)" data-title="Cichlid Display" data-type="Freshwater" data-size="100 Gallon" data-desc="An African cichlid tank with stacked rock formations and bright Mbuna species.">
+          <div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><rect x="6" y="8" width="24" height="20" rx="3"/></svg>Your photo</div></div>
+          <div class="strip-overlay"><h4>Cichlid Display</h4><span>Freshwater &bull; 100 Gal</span></div>
+        </div>
+        <div class="strip-card" onclick="openLightbox(this)" data-title="Bedroom Nano" data-type="Freshwater" data-size="10 Gallon" data-desc="A tiny planted nano tank with a betta and cherry shrimp, designed for a nightstand.">
+          <div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><rect x="10" y="12" width="16" height="14" rx="2"/></svg>Your photo</div></div>
+          <div class="strip-overlay"><h4>Bedroom Nano</h4><span>Freshwater &bull; 10 Gal</span></div>
+        </div>
+        <div class="strip-card" onclick="openLightbox(this)" data-title="Waiting Room Reef" data-type="Saltwater" data-size="80 Gallon" data-desc="A clean saltwater reef installed in a dental office waiting room in Campbell.">
+          <div class="placeholder"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><ellipse cx="18" cy="22" rx="14" ry="8"/></svg>Your photo</div></div>
+          <div class="strip-overlay"><h4>Waiting Room Reef</h4><span>Saltwater &bull; 80 Gal</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — compact -->
+  <section id="about">
+    <div class="about-strip">
+      <div class="about-photo reveal">
+        <div class="placeholder" style="height:100%;"><div class="placeholder-inner"><svg class="placeholder-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1"><circle cx="18" cy="14" r="6"/><path d="M6 32c0-6 5-11 12-11s12 5 12 11"/></svg>Your photo</div></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">About</span>
+        <h2 class="section-title">Aquariums Built with Care</h2>
+        <p>At Ishak Custom Aquariums, every build starts with a conversation. We work closely with each client to design an aquarium that fits their space, their taste, and the species they want to keep — whether that's a lush planted freshwater tank, a vibrant reef, or a dramatic custom installation.</p>
+        <p>Based in the Bay Area, we handle everything from design and construction to stocking and initial setup. Our specialty is freshwater, but we build across the full spectrum.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top: 0.5rem;">Get a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p>Have a space in mind? Tell us about your vision and we'll get back to you with ideas and a free consultation.</p>
+        <div class="contact-detail">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 8l9 6 9-6"/><rect x="3" y="6" width="18" height="13" rx="2"/></svg></div>
+          <span><a href="mailto:hello@ishakaquariums.com">hello@ishakaquariums.com</a></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <span>San Francisco Bay Area</span>
+        </div>
+      </div>
+      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <input type="text" name="subject" placeholder="What are you looking for? (e.g. 75gal freshwater planted)">
+        <textarea name="message" placeholder="Tell us about your space and what you have in mind..." required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Ishak Custom Aquariums</span>
+    <a href="#" class="nav-logo" style="font-size:1.1rem; text-decoration:none;">Ishak <span>Aquariums</span></a>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <div class="lightbox-img-placeholder" id="lbImg">Your photo here</div>
+      <div class="lightbox-body">
+        <h3 id="lbTitle"></h3>
+        <div class="lb-meta"><span id="lbType"></span><span id="lbSize"></span></div>
+        <p id="lbDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.filter-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const f = tab.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(c => {
+          c.style.display = (f === 'all' || c.dataset.category === f) ? '' : 'none';
+        });
+      });
+    });
+
+    function openLightbox(el) {
+      document.getElementById('lbTitle').textContent = el.dataset.title || '';
+      document.getElementById('lbType').textContent = el.dataset.type || '';
+      document.getElementById('lbSize').textContent = el.dataset.size || '';
+      document.getElementById('lbDesc').textContent = el.dataset.desc || '';
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Message Sent!';
+      btn.style.background = 'var(--moss)';
+      setTimeout(() => { btn.textContent = 'Send Message'; btn.style.background = ''; e.target.reset(); }, 3000);
+    }
+  </script>
+</body>
+</html>
