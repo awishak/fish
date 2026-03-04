@@ -65,10 +65,10 @@
     #showcase{padding:5rem 2rem 6rem;background:var(--sand)}
     .showcase-header{text-align:center;max-width:650px;margin:0 auto 3.5rem}
     .showcase-header p{color:var(--text-light);line-height:1.7;font-weight:300}
-    .showcase-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1200px;margin:0 auto}
-    .showcase-card{border-radius:16px;overflow:hidden;position:relative;transition:transform .4s ease,box-shadow .4s ease;cursor:pointer;background:var(--deep-water)}
+    .showcase-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;max-width:1200px;margin:0 auto}
+    .showcase-card{border-radius:16px;overflow:hidden;position:relative;transition:transform .4s ease,box-shadow .4s ease;cursor:pointer;background:var(--deep-water);min-height:300px}
     .showcase-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(26,58,58,0.15)}
-    .showcase-card.featured{grid-column:span 2}
+    .showcase-card.featured{grid-column:span 3}
     .showcase-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
     .showcase-card:hover img{transform:scale(1.03)}
     .card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,58,58,0.88) 0%,rgba(26,58,58,0.2) 50%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s ease}
@@ -203,7 +203,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Ishak Custom Aquariums</h1>
-      <p>Custom-built freshwater aquariums and paludariums, designed and installed across the Bay Area. Over 20 thriving setups and counting.</p>
+      <p>You dream it. You ask it. We build it.</p>
       <div class="scroll-hint">
         <a href="#showcase">See our work<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
       </div>
@@ -219,6 +219,66 @@
     </div>
 
     <div class="showcase-grid">
+
+      <!-- 1. Residential Aquarium (Home 30g) -->
+      <div class="showcase-card featured reveal" onclick="openLightbox(this)">
+        <img src="Residential-Aquarium.jpeg" alt="Residential freshwater aquarium with driftwood, plants, and colorful fish">
+        <div class="card-overlay">
+          <h3>Residential Aquarium</h3>
+          <p>A heavily stocked 30-gallon home setup packed with driftwood, live plants, and a vibrant mix of freshwater fish — built to be a living centerpiece.</p>
+          <div class="card-tags"><span>Freshwater</span><span>30 Gallon</span><span>Heavily Stocked</span></div>
+        </div>
+      </div>
+
+      <!-- 2. Classroom Aquarium -->
+      <div class="showcase-card reveal" onclick="openLightbox(this)">
+        <img src="Classroom_Aquarium.jpeg" alt="Classroom freshwater aquarium with rocks and plants">
+        <div class="card-overlay">
+          <h3>Classroom Aquarium</h3>
+          <p>A 10-gallon freshwater setup designed for a classroom environment — easy to maintain, educational, and built to spark curiosity.</p>
+          <div class="card-tags"><span>Freshwater</span><span>10 Gallon</span><span>Classroom</span></div>
+        </div>
+      </div>
+
+      <!-- 3. Community Aquarium (110g) -->
+      <div class="showcase-card reveal" onclick="openLightbox(this)">
+        <img src="Community_Aquarium.jpeg" alt="Large 110 gallon community aquarium with over 100 fish">
+        <div class="card-overlay">
+          <h3>Community Aquarium</h3>
+          <p>An incredibly affordable 110-gallon build home to over 100 fish — proof that going big doesn't have to break the bank.</p>
+          <div class="card-tags"><span>Freshwater</span><span>110 Gallon</span><span>100+ Fish</span></div>
+        </div>
+      </div>
+
+      <!-- 4. Breeding Tank (Home 10g) -->
+      <div class="showcase-card reveal" onclick="openLightbox(this)">
+        <img src="Fish-Breeding-Aquarium.jpeg" alt="10 gallon breeding tank with diorama aquascape and moss bonsai">
+        <div class="card-overlay">
+          <h3>Breeding Tank</h3>
+          <p>A 10-gallon breeder with a diorama-style aquascape featuring a moss bonsai tree and dense carpet plants — small but stunning.</p>
+          <div class="card-tags"><span>Freshwater</span><span>10 Gallon</span><span>Breeder</span></div>
+        </div>
+      </div>
+
+      <!-- 5. High Tech Aquarium (Chase 30g) -->
+      <div class="showcase-card reveal" onclick="openLightbox(this)">
+        <img src="High-Tech-Aquarium.jpeg" alt="High tech 30 gallon aquarium with heavy equipment and lush plants">
+        <div class="card-overlay">
+          <h3>High Tech Aquarium</h3>
+          <p>A 30-gallon setup loaded with equipment — oversized filtration, high-output lighting, and a heavy plant load for serious aquascaping results.</p>
+          <div class="card-tags"><span>Freshwater</span><span>30 Gallon</span><span>High Tech</span></div>
+        </div>
+      </div>
+
+      <!-- 6. Specialty Fish Aquarium (20g long) -->
+      <div class="showcase-card reveal" onclick="openLightbox(this)">
+        <img src="Specialty-Fish-Aquarium.jpeg" alt="20 gallon long specialty aquarium with goldfish and terrestrial plants">
+        <div class="card-overlay">
+          <h3>Specialty Fish Aquarium</h3>
+          <p>A 20-gallon long build featuring terrestrial plants and goldfish — designed around the specific needs of specialty species.</p>
+          <div class="card-tags"><span>Freshwater</span><span>20 Gallon Long</span><span>Goldfish</span></div>
+        </div>
+      </div>
 
       <!-- Featured: UNS Shallow Tank -->
       <div class="showcase-card featured reveal" onclick="openLightbox(this)">
@@ -244,18 +304,9 @@
       <div class="showcase-card reveal" onclick="openLightbox(this)">
         <img src="images/mini-paludarium.png" alt="2.1 gallon paludarium with rock formation and waterfall">
         <div class="card-overlay">
-          <h3>2.1 Gallon Paludarium</h3>
+          <h3>Desktop Aquarium</h3>
           <p>A compact paludarium built for a customer with terrestrial plants, a waterfall, and home to a crowntail betta and white cloud mountain minnows.</p>
           <div class="card-tags"><span>Paludarium</span><span>2.1 Gallon</span><span>Customer Build</span></div>
-        </div>
-      </div>
-
-      <!-- Placeholder slots for future photos -->
-      <div class="showcase-card reveal" style="min-height:320px;">
-        <div class="placeholder-card">Your next build photo here</div>
-        <div class="card-overlay">
-          <h3>More builds coming soon</h3>
-          <p>We're always working on new projects. Check back for updates.</p>
         </div>
       </div>
 
@@ -314,7 +365,25 @@
         </div>
       </div>
 
-      <p class="pricing-disclaimer">All prices are estimates and subject to change. Full setup cost does not include fish. If you'd like a tank size we haven't listed, we're happy to source one for you. The tanks shown are examples of builds we prefer for our customers.</p>
+      <p class="pricing-disclaimer">All prices are estimates and subject to change. Full setup cost does not include fish.</p>
+
+      <div class="includes-section" style="margin-top:2.5rem;text-align:left;max-width:600px;margin-left:auto;margin-right:auto;">
+        <h3 style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--deep-water);margin-bottom:1rem;text-align:center;">What Every Custom Tank Includes</h3>
+        <div style="display:flex;flex-direction:column;gap:.8rem;">
+          <div style="display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;background:var(--warm-white);border-radius:10px;border:1px solid rgba(181,166,142,0.25);">
+            <span style="color:var(--aqua);font-weight:600;font-size:1.1rem;line-height:1.4;">&#x2713;</span>
+            <span style="color:var(--text-light);font-weight:300;line-height:1.6;font-size:.92rem;"><strong style="color:var(--text);font-weight:500;">Full tank + aquascape</strong> — hardscape, live plants, substrate, and everything that goes inside the tank.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;background:var(--warm-white);border-radius:10px;border:1px solid rgba(181,166,142,0.25);">
+            <span style="color:var(--aqua);font-weight:600;font-size:1.1rem;line-height:1.4;">&#x2713;</span>
+            <span style="color:var(--text-light);font-weight:300;line-height:1.6;font-size:.92rem;"><strong style="color:var(--text);font-weight:500;">All needed equipment</strong> — filter, heater, light, and any other hardware your setup requires.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;background:var(--warm-white);border-radius:10px;border:1px solid rgba(181,166,142,0.25);">
+            <span style="color:var(--aqua);font-weight:600;font-size:1.1rem;line-height:1.4;">&#x2713;</span>
+            <span style="color:var(--text-light);font-weight:300;line-height:1.6;font-size:.92rem;"><strong style="color:var(--text);font-weight:500;">Labor</strong> — the cost of one of our team members hand-building and aquascaping your tank.</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -378,6 +447,16 @@
 
       <div class="faq-item reveal">
         <button class="faq-question" onclick="toggleFaq(this)">
+          <h3>What are the benefits of live plants in an aquarium?</h3>
+          <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          Live plants do a lot more than just look good — they're one of the best things you can add to any tank. They act as a <strong>natural filter</strong>, absorbing ammonia, nitrites, and nitrates that would otherwise build up and harm your fish. They also <strong>produce oxygen</strong> during the day, which keeps your water healthier and your fish more active. Plants give fish and invertebrates <strong>natural hiding spots</strong>, which reduces stress and encourages more natural behavior. They also help <strong>outcompete algae</strong> for nutrients and light, meaning a well-planted tank tends to stay cleaner with less effort. On top of all that, a tank full of live plants simply looks more alive — there's a depth and movement to it that artificial decorations can't replicate.
+        </div></div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">
           <h3>Is algae bad for my aquarium? How do I get rid of it?</h3>
           <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
         </button>
@@ -392,7 +471,7 @@
   <!-- ===== ABOUT ===== -->
   <section id="about">
     <div class="about-strip">
-      <div class="about-photo reveal">Your photo here</div>
+      <div class="about-photo reveal"><img src="Leonard-sideview.jpeg" alt="Side view of a freshwater aquarium" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;"></div>
       <div class="about-text reveal">
         <span class="section-label">About</span>
         <h2 class="section-title">Aquariums Built with Care</h2>
@@ -411,23 +490,13 @@
         <h2 class="section-title">Let's Build Something</h2>
         <p>Have a space in mind? Tell us about your vision and we'll get back to you with ideas and a free consultation.</p>
         <div class="contact-detail">
-          <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 8l9 6 9-6"/><rect x="3" y="6" width="18" height="13" rx="2"/></svg></div>
-          <span><a href="mailto:hello@ishakaquariums.com">hello@ishakaquariums.com</a></span>
-        </div>
-        <div class="contact-detail">
           <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
           <span>San Francisco Bay Area</span>
         </div>
       </div>
-      <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-        <div class="form-row">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Email address" required>
-        </div>
-        <input type="text" name="subject" placeholder="What are you looking for? (e.g. 20gal freshwater planted)">
-        <textarea name="message" placeholder="Tell us about your space and what you have in mind..." required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
+      <div class="contact-form reveal">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfyrsiLmR8jdqvr0pm7uKU0Y6pO3yScRZNovmqzed5oiPBukQ/viewform?embedded=true" width="100%" height="700" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:12px;background:rgba(255,255,255,0.03);">Loading...</iframe>
+      </div>
     </div>
   </section>
 
@@ -488,13 +557,4 @@
       if(!wasOpen)item.classList.add('open');
     }
 
-    // Form
-    function handleSubmit(e){
-      e.preventDefault();
-      const btn=e.target.querySelector('button');
-      btn.textContent='Message Sent!';btn.style.background='var(--moss)';
-      setTimeout(()=>{btn.textContent='Send Message';btn.style.background='';e.target.reset()},3000);
-    }
   </script>
-</body>
-</html>
